@@ -1,0 +1,64 @@
+{
+    "name": "osc-sender",
+    "displayName": "OSC Sender",
+    "description": "Send OSC messages from VSCode",
+    "version": "0.0.1",
+    "publisher": "gabe927",
+    "engines": {
+      "vscode": "^1.92.0"
+    },
+    "activationEvents": [
+      "onCommand:oscSender.sendOSCMessage"
+    ],
+    "main": "./out/extension.js",
+    "contributes": {
+      "commands": [
+        {
+          "command": "oscSender.sendOSC",
+          "title": "Send OSC Message"
+        }
+      ],
+      "configuration": {
+        "type": "object",
+        "title": "OSC Sender Settings",
+        "properties": {
+          "oscSender.remoteAddress": {
+            "type": "string",
+            "format": "ipv4",
+            "order": 0,
+            "scope": "window",
+            "default": "127.0.0.1",
+            "description": "IP address of OSC destination"
+          },
+          "oscSender.remotePort": {
+            "type": "number",
+            "order": 1,
+            "scope": "window",
+            "default": 1266,
+            "description": "Port of OSC destination"
+          },
+          "oscSender.messages": {
+            "type": "object",
+            "order": 2,
+            "scope": "window",
+            "default": {"/path1": ["your arguments here"], "/path2": ["send as many arguments as you want", 123, 456, 789]},
+            "description": "Messages to send. Create individual messages with different paths and arguments to send at a time"
+          }
+        }
+      }
+    },
+    "scripts": {
+      "vscode:prepublish": "npm run compile",
+      "compile": "tsc -p ./",
+      "watch": "tsc -watch -p ./",
+      "postinstall": "node ./node_modules/vscode/bin/install"
+    },
+    "devDependencies": {
+      "typescript": "^5.4.5",
+      "vscode": "^1.92.0"
+    },
+    "dependencies": {
+      "osc": "^2.4.5"
+    }
+  }
+  
