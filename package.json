@@ -2,7 +2,7 @@
     "name": "osc-sender",
     "displayName": "OSC Sender",
     "description": "Send OSC messages from Visual Studio Code",
-    "version": "0.0.1",
+    "version": "1.0.0",
     "publisher": "gabe927",
     "license": "GPL-3.0-only",
     "homepage": "https://github.com/gabe927/vsc-osc-sender",
