@@ -52,7 +52,7 @@
             "type": "number",
             "order": 1,
             "scope": "window",
-            "default": 1266,
+            "default": 8080,
             "description": "Port of OSC destination"
           },
           "oscSender.messages": {
