@@ -16,25 +16,30 @@ export function activate(context: vscode.ExtensionContext) {
         const config = vscode.workspace.getConfiguration('oscSender');
         const remoteAddress = config.get<string>('remoteAddress') || '127.0.0.1';
         const remotePort = config.get<number>('remotePort') || 1266;
-        const messages = config.get<{ [key: string]: any[] }>('messages') || { "/path1": ["your arguments here"] };
+        const messages = config.get<{ [key: string]: any[] }>('messages');
 
         udpPort.options.remoteAddress = remoteAddress;
         udpPort.options.remotePort = remotePort;
 
-        // Iterate over the keys in the messages object
-        for (const path in messages) {
-            if (messages.hasOwnProperty(path)) {
-                const args = messages[path];  // Arguments for each OSC path
+        // Check if messages exist
+        if (messages && Object.keys(messages).length > 0) {
+            // Iterate over the keys in the messages object
+            for (const path in messages) {
+                if (messages.hasOwnProperty(path)) {
+                    const args = messages[path];  // Arguments for each OSC path
 
-                // Send OSC message
-                udpPort.send({
-                    address: path,
-                    args: args
-                });
+                    // Send OSC message
+                    udpPort.send({
+                        address: path,
+                        args: args
+                    });
 
-                // Provide feedback to the user
-                vscode.window.showInformationMessage(`OSC Message Sent to ${remoteAddress}:${remotePort} with path ${path} and args ${JSON.stringify(args)}`);
+                    // Provide feedback to the user
+                    vscode.window.showInformationMessage(`OSC Message Sent to ${remoteAddress}:${remotePort} with path ${path} and args ${JSON.stringify(args)}`);
+                }
             }
+        } else {
+            vscode.window.showWarningMessage('No OSC messages found in the configuration. Check your settings.json file!');
         }
     };
 
