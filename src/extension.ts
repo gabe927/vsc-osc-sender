@@ -16,7 +16,10 @@ export function activate(context: vscode.ExtensionContext) {
         const config = vscode.workspace.getConfiguration('oscSender');
         const remoteAddress = config.get<string>('remoteAddress') || '127.0.0.1';
         const remotePort = config.get<number>('remotePort') || 1266;
-        const messages = config.get<{ [key: string]: any[] }>('messages');
+
+        // Use the `inspect` method to check the actual user-defined settings without merging defaults
+        const messagesConfig = config.inspect<{ [key: string]: any[] }>('messages');
+        const messages = messagesConfig?.workspaceValue || messagesConfig?.globalValue || {};
 
         udpPort.options.remoteAddress = remoteAddress;
         udpPort.options.remotePort = remotePort;
