@@ -63,7 +63,14 @@
             "description": "Messages to send. Create individual messages with different paths and arguments to send at a time"
           }
         }
-      }
+      },
+      "keybindings": [
+        {
+          "command": "oscSender.sendOSC",
+          "key": "ctrl+alt+s",
+          "when": "editorTextFocus"
+        }
+      ]
     },
     "scripts": {
       "vscode:prepublish": "npm run compile",
