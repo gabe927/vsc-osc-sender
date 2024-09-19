@@ -4,6 +4,7 @@
     "description": "Send OSC messages from VSCode",
     "version": "0.0.1",
     "publisher": "gabe927",
+    "icon": "images/icon.png",
     "engines": {
       "vscode": "^1.92.0"
     },
