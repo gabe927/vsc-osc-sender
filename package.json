@@ -1,9 +1,26 @@
 {
     "name": "osc-sender",
     "displayName": "OSC Sender",
-    "description": "Send OSC messages from VSCode",
+    "description": "Send OSC messages from Visual Studio Code",
     "version": "0.0.1",
     "publisher": "gabe927",
+    "license": "GPL-3.0-only",
+    "homepage": "https://github.com/gabe927/vsc-osc-sender",
+    "repository": {
+      "type": "github",
+      "url": "https://github.com/gabe927/vsc-osc-sender.git"
+    },
+    "bugs": {
+      "url": "https://github.com/gabe927/vsc-osc-sender/issues"
+    },
+    "keywords": [
+      "osc",
+      "open sound control",
+      "grandma3"
+    ],
+    "categories": [
+      "Other"
+    ],
     "icon": "images/icon.png",
     "engines": {
       "vscode": "^1.92.0"
