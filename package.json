@@ -28,7 +28,7 @@
             "order": 0,
             "scope": "window",
             "default": "127.0.0.1",
-            "description": "IP address of OSC destination"
+            "description": "IP address or hostname of OSC destination"
           },
           "oscSender.remotePort": {
             "type": "number",
